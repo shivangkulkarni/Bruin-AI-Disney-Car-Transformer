@@ -1,6 +1,7 @@
 import requests
 from PIL import Image
 from transformers import BlipProcessor, BlipForConditionalGeneration
+from image_gen import generate_image_from_description
 
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
@@ -21,5 +22,10 @@ out = model.generate(
     length_penalty=2.0,  # Encourage longer sequences
     top_p=0  # Use nucleus sampling for diversity in output
 )
+description = processor.decode(out[0], skip_special_tokens=True)
 
-print(processor.decode(out[0], skip_special_tokens=True))
+print(description)
+
+output = generate_image_from_description(description)
+
+print(output)
