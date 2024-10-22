@@ -5,7 +5,7 @@ from transformers import BlipProcessor, BlipForConditionalGeneration
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
 
-image_path = 'image.jpg' 
+image_path = 'dennis.jpg' 
 raw_image = Image.open(image_path).convert('RGB')
 
 # image captioning
@@ -22,4 +22,5 @@ out = model.generate(
     top_p=0.9  # Use nucleus sampling for diversity in output
 )
 
-print(processor.decode(out[0], skip_special_tokens=True))
+description = processor.decode(out[0], skip_special_tokens=True)
+print(description)
