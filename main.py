@@ -6,7 +6,11 @@ from image_gen import generate_image_from_description
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
 
+
+
+
 image_path = 'image.jpg' # Image path
+
 raw_image = Image.open(image_path).convert('RGB')
 
 # image captioning
@@ -26,6 +30,6 @@ description = processor.decode(out[0], skip_special_tokens=True)
 
 print(description)
 
-output = generate_image_from_description(description)
+print(processor.decode(out[0], skip_special_tokens=True))
 
 print(output)
