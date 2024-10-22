@@ -15,11 +15,11 @@ out = model.generate(
 
     **inputs,
     max_length=40,  
-    min_length=20,  
+    min_length=25,  
     num_beams=3,  # Use beam search for better quality
     repetition_penalty=1.1,  # Avoid repetitive outputs
     length_penalty=2.0,  # Encourage longer sequences
-    top_p=0.9  # Use nucleus sampling for diversity in output
+    top_p=0  # Use nucleus sampling for diversity in output
 )
 
 print(processor.decode(out[0], skip_special_tokens=True))
