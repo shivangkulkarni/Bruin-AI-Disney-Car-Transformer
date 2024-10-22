@@ -30,6 +30,6 @@ description = processor.decode(out[0], skip_special_tokens=True)
 
 print(description)
 
-print(processor.decode(out[0], skip_special_tokens=True))
+output = generate_image_from_description(description)
 
 print(output)
